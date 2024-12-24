@@ -12,8 +12,39 @@ datasource db {
 }
 
 model users {
-  id        Int      @id @default(autoincrement())
+  id        String    @id @default(uuid())
   name      String
   email     String   @unique
+  mobile    String
+  inventory inventory[]
+  createdAt DateTime @default(now())
+}
+
+model categories {
+  id        Int      @id @default(autoincrement())
+  name      String
+  products  products[]
+  createdAt DateTime @default(now())
+}
+
+model products {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  categoryId  Int
+  category    categories @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime @default(now())
+
+  inventory inventory[]
+}
+
+model inventory {
+  id        Int      @id @default(autoincrement())
+  productId Int
+  product   products @relation(fields: [productId], references: [id])
+  quantity  Int
+  avaiable Boolean
+  userId String     
+  user    users @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())
 }
