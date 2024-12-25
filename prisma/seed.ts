@@ -15,8 +15,8 @@ main()
   })
   
 async function seedUsers() {
-  if (!await prisma.users.findFirst({ where: { email: 'dhananjayak@yahoo.com' } })) {
-    await prisma.users.create({
+  if (!await prisma.user.findFirst({ where: { email: 'dhananjayak@yahoo.com' } })) {
+    await prisma.user.create({
       data: {
         email: 'dhananjayak@yahoo.com',
         name: 'Dhananjaya',
@@ -27,16 +27,16 @@ async function seedUsers() {
 }
 
 async function seedCategories() {
-  if (!await prisma.categories.findFirst({ where: { name: 'Medicine Supplies' } })) {
-    await prisma.categories.create({
+  if (!await prisma.category.findFirst({ where: { name: 'Medicine Supplies' } })) {
+    await prisma.category.create({
       data: {
         name: 'Medicine Supplies',
       }
     });
   }
 
-  if (!await prisma.categories.findFirst({ where: { name: 'Medicine' } })) {
-    await prisma.categories.create({
+  if (!await prisma.category.findFirst({ where: { name: 'Medicine' } })) {
+    await prisma.category.create({
       data: {
         name: 'Medicine',
       }
