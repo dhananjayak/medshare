@@ -6,3 +6,10 @@ export async function categories() {
 
     return toCategories(result);
 }
+
+// find category by name
+export async function findCategoryByName(name: string) {
+    const result = await prisma.category.findFirst({ where: { name } });
+
+    return result;
+}
