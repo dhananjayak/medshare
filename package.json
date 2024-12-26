@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "prisma generate && next dev --turbopack",
-    "build": "prisma generate && prisma db push && prisma db seed && next build",
+    "build": "next build",
+    "devbuild": "prisma generate && prisma db push && prisma db seed && next build",
     "start": "next start",
     "lint": "next lint"
   },
